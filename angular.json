@@ -96,7 +96,7 @@
           "builder": "@angular-devkit/build-angular:server",
           "options": {
             "outputPath": "dist/clima/server",
-            "main": "server.ts",
+            "main": "server/index.ts",
             "tsConfig": "tsconfig.server.json"
           },
           "configurations": {

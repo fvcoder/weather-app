@@ -1,3 +1,10 @@
-<h1 class="text-3xl font-bold underline">
-  Hello world!
-</h1>
+<div class="max-w-md mx-auto px-4 h-screen flex flex-col gap-4 py-4">
+  <header>
+    <a routerLink="/">
+      <img src="/assets/logo.header.png" alt="Amber Clima" width="120" height="auto" class="mx-auto">
+    </a>
+  </header>
+  <main class="flex-1">
+    <router-outlet></router-outlet>
+  </main>
+</div>
