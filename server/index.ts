@@ -8,6 +8,7 @@ import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 
 import { AppServerModule } from '../src/main.server';
+import { searchCountry } from './router/search';
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
@@ -28,6 +29,7 @@ export function app(): express.Express {
 	server.set('view engine', 'html');
 	server.set('views', distFolder);
 
+	server.get('/api/search', searchCountry);
 	// Example Express Rest API endpoints
 	// server.get('/api/**', (req, res) => { });
 	// Serve static files from /browser
