@@ -1,19 +1,12 @@
 /** @type {import('eslint').ESLint.ConfigData} */
 module.exports = {
-  extends: ["eslint-config-codely/typescript"],
   overrides: [
     {
-      files: ["src/*.ts"],
+      extends: ["eslint-config-codely/typescript"],
+      files: ["*.ts"],
       parserOptions: {
         tsconfigRootDir: __dirname,
-        project: ["./tsconfig.app.json"],
-      },
-    },
-    {
-      files: ["server/*.ts"],
-      parserOptions: {
-        tsconfigRootDir: __dirname,
-        project: ["./tsconfig.server.json"],
+        project: "./tsconfig.json",
       },
     },
   ],
