@@ -14,8 +14,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 ```bash
-npm run build:ssr
-npm run serve:ssr
+npm run dev:ssr
 ```
 
 
