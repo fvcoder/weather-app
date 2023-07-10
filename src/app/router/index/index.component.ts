@@ -20,9 +20,11 @@ export class IndexPage implements OnInit, OnDestroy {
     this.suscribe.push(
       this.seachInput.valueChanges.subscribe((query) => {
         if (query && query !== '') {
-          this.api.search(query).subscribe((res) => {
-            this.results = res.result;
-          });
+          this.suscribe.push(
+            this.api.search(query).subscribe((res) => {
+              this.results = res.result;
+            })
+          );
         } else {
           this.results = [];
         }
