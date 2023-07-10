@@ -1,17 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { PrismaClient } from '@prisma/client';
 import { Request, Response } from 'express';
-
-function isJsonString(str: string): boolean {
-  try {
-    JSON.parse(str);
-  } catch (e) {
-    return false;
-  }
-
-  return true;
-}
+import { db } from 'server/lib/db';
 
 export async function searchCountry(
   req: Request,
@@ -20,13 +10,10 @@ export async function searchCountry(
   if (req.query['query'] && typeof req.query['query'] === 'string') {
     const query = req.query['query'];
 
-    const db = new PrismaClient();
     const result = await db.city.findMany({
       select: {
         id: true,
-        coord: true,
         country: true,
-        geoname: true,
         name: true,
       },
       where: {
@@ -40,11 +27,7 @@ export async function searchCountry(
     return res.json({
       status: true,
       query,
-      result: result.map((x) => ({
-        ...x,
-        coord: isJsonString(x.coord) ? JSON.parse(x.coord) : x.coord,
-        geoname: isJsonString(x.geoname) ? JSON.parse(x.geoname) : x.geoname,
-      })),
+      result,
     });
   }
 
